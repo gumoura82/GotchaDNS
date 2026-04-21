@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Itens de Solução/">
+    <File Path="README.md" />
+  </Folder>
   <Project Path="GotchaDNS.Engine/GotchaDNS.Engine.csproj" />
   <Project Path="GotchaDNS.UI/GotchaDNS.UI.csproj" />
 </Solution>
