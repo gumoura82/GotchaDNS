@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GotchaDNS Dashboard</title>
+    <style>
+        /* Base visual rápida e limpa */
+        body {
+            font-family: system-ui, sans-serif;
+            background: #1e1e1e;
+            color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .header {
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .log-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            height: 300px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .log-item {
+            background: #2d2d2d;
+            padding: 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 4px solid #555;
+            transition: background 0.2s;
+        }
+
+            .log-item:hover {
+                background: #3d3d3d;
+            }
+
+            /* Cores de status */
+            .log-item.malware {
+                border-color: #c0392b;
+            }
+
+            .log-item.ads {
+                border-color: #f39c12;
+            }
+
+            .log-item.telemetry {
+                border-color: #2980b9;
+            }
+
+        /* Painel de detalhes (escondido até clicar) */
+        .detail-panel {
+            display: none;
+            background: #252525;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 1px solid #444;
+        }
+
+        .btn {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 15px;
+            font-size: 1.1em;
+        }
+
+            .btn:hover {
+                background: #2ecc71;
+            }
+
+        /* Scrollbar pro painel */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1e1e1e;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #555;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h2>GotchaDNS - Interceptações</h2>
+        <p style="color: #aaa; font-size: 0.9em;">Selecione um domínio bloqueado para avaliar e liberar acesso.</p>
+    </div>
+
+    <div id="logContainer" class="log-list">
+        <p>Aguardando motor de rede...</p>
+    </div>
+
+    <div id="detailPanel" class="detail-panel">
+        <h3 id="detailDomain" style="margin-top: 0; color: #fff;">...</h3>
+        <p style="color: #aaa;"><strong>Motivo:</strong> <span id="detailReason" style="color: #fff;">...</span></p>
+        <p style="color: #aaa;"><strong>Horário:</strong> <span id="detailTime" style="color: #fff;">...</span></p>
+        <p style="color: #aaa;"><strong>IP Origem:</strong> <span id="detailIp" style="color: #fff;">...</span></p>
+
+        <button id="btnWhitelist" class="btn">✓ Liberar este domínio</button>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

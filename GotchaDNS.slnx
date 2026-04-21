@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="GotchaDNS.Engine/GotchaDNS.Engine.csproj" />
+  <Project Path="GotchaDNS.UI/GotchaDNS.UI.csproj" />
+</Solution>
