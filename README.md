@@ -2,15 +2,11 @@
 
 **DNS Sinkhole nativo para Windows** — bloqueia anúncios, telemetria e malware no nível do sistema operacional, antes que qualquer conexão TCP ocorra. Protege navegadores, jogos e processos em background sem causar lentidão perceptível.
 
----
-
 ## O que é
 
 O GotchaDNS sequestra o tráfego DNS da sua máquina na porta UDP/53 e aplica regras de bloqueio em memória com foco em zero-allocation. Domínios permitidos são encaminhados normalmente à Cloudflare (`1.1.1.1`). Domínios bloqueados recebem uma resposta DNS forjada com `0.0.0.0` — a conexão morre instantaneamente, sem timeout.
 
 A interface desktop (Photino + TypeScript) consome uma API mínima exposta pelo motor para exibir logs em tempo real e gerenciar liberações manuais.
-
----
 
 ## Arquitetura
 
@@ -42,8 +38,6 @@ GotchaDNS/
 | `WhitelistRequest` | Record com `domain` para o `POST /api/whitelist` |
 | `GotchaDNS.UI` | Janela Photino que carrega o `index.html` do build Vite |
 
----
-
 ## Endpoints HTTP
 
 A API mínima roda no mesmo processo do motor (ASP.NET Core Minimal APIs) na porta `5005`.
@@ -52,8 +46,6 @@ A API mínima roda no mesmo processo do motor (ASP.NET Core Minimal APIs) na por
 |---|---|---|
 | `GET` | `/api/logs` | Retorna os logs de domínios bloqueados (a UI inverte a lista para mostrar os mais recentes primeiro) |
 | `POST` | `/api/whitelist` | Aceita `{ "domain": "dominio.tld" }` — ponto de integração para liberar domínios |
-
----
 
 ## Status atual
 
@@ -74,8 +66,6 @@ A API mínima roda no mesmo processo do motor (ASP.NET Core Minimal APIs) na por
 - [ ] **Whitelist real** — implementar o mecanismo que altera o comportamento do motor (cache de permissões), não apenas registra a ação no console
 - [ ] **Testes** — unitários e de integração para parse DNS, forwarding e API
 
----
-
 ## Requisitos
 
 - .NET SDK 8 ou superior
@@ -83,8 +73,6 @@ A API mínima roda no mesmo processo do motor (ASP.NET Core Minimal APIs) na por
 - Permissões administrativas (ligação na porta UDP/53)
 
 > No Windows, execute o processo com privilégios elevados. Em Linux, pode haver conflito com o `systemd-resolved` — desative ou redirecione a porta conforme necessário.
-
----
 
 ## Como rodar
 
@@ -120,8 +108,6 @@ dotnet run
 ```
 
 A janela Photino carrega `{AppContext.BaseDirectory}/frontend/dist/index.html`. Se a API estiver offline, a UI exibe dados de exemplo automaticamente.
-
----
 
 ## Notas técnicas e limitações conhecidas
 
