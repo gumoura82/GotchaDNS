@@ -106,7 +106,3 @@ Scripts de apoio (Windows PowerShell):
 - `EnsureCreated()` é usado no momento para criar o DB; para produção recomenda-se usar migrações EF Core.
 - CORS aberto (`AllowAnyOrigin`) por conveniência de desenvolvimento — não adequado para produção.
 - Resposta forjada cobre queries A em casos comuns; implementação pode ser estendida para AAAA, CNAME e perguntas múltiplas.
-
----
-
-Se quiser, eu faço commits atômicos com as mudanças atuais e crio um branch para as próximas melhorias (migrations, Serilog, blocklists dinâmicas).
